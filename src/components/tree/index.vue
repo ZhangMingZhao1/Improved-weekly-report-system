@@ -5,7 +5,7 @@
         expand-trigger="hover"
         :options="options"
         v-model="selectedOptions2"
-        @change="handleChange">
+        @change="handleTreeChange">
     </el-cascader>
     </div>
     <div>
@@ -33,14 +33,15 @@
     data() {
       return {
         textContent: "",
+        textTitle: "",
         options: [{
-          value: 'zhinan',
+          value: '指南',
           label: '指南',
           children: [{
-            value: 'shejiyuanze',
+            value: '设计原则',
             label: '设计原则',
             children: [{
-              value: 'yizhi',
+              value: '一致',
               label: '一致'
             }, {
               value: 'kekong',
@@ -221,14 +222,17 @@
       };
     },
     methods: {
-      handleChange(value) {
+      handleTreeChange(value) {
+        let res = value.join("'\'");
+        this.textTitle = value.map((v,k)=>{
+
+        })
         console.log(value);
       },
       handleTextchange(value) {
           console.log("handleTextchange");
       },
       handleSubmit() {
-        //   console.log(textContent);
           console.log(this.textContent)
       }
     }
